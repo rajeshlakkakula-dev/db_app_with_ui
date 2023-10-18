@@ -32,7 +32,7 @@ class Databases {
   Future<List<Students>> retrieveStudents() async {
     final Database db = await initDB();
 
-    final List<Map<String, Object>> queryResult = db.query('students') as List<Map<String, Object>>;
+    final List<Map<String, Object?>> queryResult = await db.query('students');
 
     return queryResult.map((e) => Students.fromMap(e)).toList();
   }

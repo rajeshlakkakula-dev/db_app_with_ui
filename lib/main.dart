@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         body: FutureBuilder(
           future: handler.retrieveStudents(),
-          builder: (context, snapshot) {
+          builder: (context, AsyncSnapshot<List<Students>>snapshot) {
             if (snapshot.hasData) {
               return ListView.builder(
                 itemCount: snapshot.data?.length,
@@ -59,7 +59,7 @@ class _MyAppState extends State<MyApp> {
                   return Card(
                     child: ListTile(
                       title: Text(snapshot.data![index].name),
-                      subtitle: Text(snapshot.data![index].age as String),
+                      subtitle: Text(snapshot.data![index].age.toString()),
                     ),
                   );
                 },
